@@ -21,6 +21,10 @@ const summaryModel = new mongoose.Schema({
         type: Number,
         default: 0,
     },
+    app:{
+        type: String,
+        require:true,
+    },
     monthYear:{
         type: String,
         default: new Date().getMonth()+1 + '-' + new Date().getFullYear(),

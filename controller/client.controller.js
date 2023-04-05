@@ -3,7 +3,7 @@ const clientModel = require('../models/client.model');
 const getAllClient  = async (req,res)=>{
     const page = req.query.page;
     const size = req.query.size;
-    console.log(page,size);
+    //console.log(page,size);
     try {
         const allClient = await clientModel.find({}).sort({_id:-1}).skip(page*size).limit(size);
 
@@ -46,7 +46,7 @@ const getOneClientByStoreUrlOrID = async (req,res) =>{
 const updateAClient = async (req,res) =>{
     const id = req.params.id;
     const updateClientData = req.body;
-    console.log(id,updateClientData);
+    //console.log(id,updateClientData);
     try {
         const updatedClient = await clientModel.updateOne({_id:id},{
             $set:updateClientData,
@@ -100,7 +100,7 @@ const createAclient  = async (req,res)=>{
     
     try {
         const existsClient = await clientModel.find({ $and: [ { storeUrl: req.body.storeUrl}, { app: req.body.app} ] });
-    console.log(existsClient);
+    //console.log(existsClient);
     if (existsClient.length > 0) {
         res.status(406).json({
             error: ' client is already exists'
